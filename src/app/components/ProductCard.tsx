@@ -2,7 +2,7 @@ import { formatDistanceToNow } from "date-fns"
 import Link from "next/link"
 
 interface Product {
-  id: string
+  _id: string
   name: string
   description: string
   status: "available" | "pending" | "given"
@@ -38,8 +38,12 @@ export default function ProductCard({ product }: ProductCardProps) {
     }
   }
 
+  const capitalize = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+
   return (
-    <Link href={`/products/${product.id}`} className="block h-full">
+    <Link href={`/products/${product._id}`} className="block h-full">
       <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-200 cursor-pointer h-full flex flex-col">
         {/* Product Image */}
         {product.image && (
@@ -64,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 product.status
               )}`}
             >
-              {product.status}
+              {capitalize(product.status)}
             </span>
           </div>
 
