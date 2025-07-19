@@ -1,18 +1,20 @@
+"use client"
 import React from "react"
+import { authClient } from "../lib/auth-client"
 
 const page = () => {
   return (
     <div>
       <button
         className="bg-black text-white p-2 rounded-md"
-        // onClick={() => authClient.signIn.social({ provider: "google" })}
+        onClick={() => authClient.signIn.social({ provider: "google" })}
       >
         Sign in with Google
       </button>
       <br />
       <button
         className="bg-black text-white p-2 rounded-md"
-        // onClick={() => authClient.signOut()}
+        onClick={() => authClient.signOut()}
       >
         Sign Out
       </button>
