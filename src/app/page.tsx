@@ -1,13 +1,14 @@
-// "use client"
-
-import { authClient } from "./lib/auth-client"
+import { auth, currentUser } from "@clerk/nextjs/server"
 import { getProducts } from "./actions/products"
 import ProductCard from "./components/ProductCard"
+import { redirect } from "next/navigation"
 
 export default async function Home() {
-  // const { data: session } = authClient.useSession()
-  // console.log(session)
+  const { userId } = await auth()
+  if (!userId) redirect("/login")
+
   const products = await getProducts()
+  console.log(userId)
   console.log(products)
 
   return (
