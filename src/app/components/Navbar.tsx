@@ -1,5 +1,6 @@
 "use client"
 
+import { SignedIn, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -38,6 +39,18 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: "h-10 w-10",
+                  },
+                  variables: {
+                    colorPrimary: "#ff7000",
+                  },
+                }}
+              />
+            </SignedIn>
           </div>
 
           {/* Mobile menu button */}
