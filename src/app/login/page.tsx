@@ -1,23 +1,20 @@
-"use client"
 import React from "react"
-import { authClient } from "../lib/auth-client"
+import { SignInButton, SignUpButton, SignOutButton } from "@clerk/nextjs"
+
+// To make this work I need create this page where the primary component is a server component
+// I need to create component within this page that is a client component that will handle the auth process
 
 const page = () => {
   return (
     <div>
-      <button
-        className="bg-black text-white p-2 rounded-md"
-        onClick={() => authClient.signIn.social({ provider: "google" })}
-      >
-        Sign in with Google
-      </button>
-      <br />
-      <button
-        className="bg-black text-white p-2 rounded-md"
-        onClick={() => authClient.signOut()}
-      >
-        Sign Out
-      </button>
+      <h1>Welcome to Christian Giving</h1>
+      <SignInButton forceRedirectUrl="/" />
+      <SignUpButton>
+        <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+          Sign Up
+        </button>
+      </SignUpButton>
+      <SignOutButton />
     </div>
   )
 }
